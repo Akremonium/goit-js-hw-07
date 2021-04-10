@@ -16,10 +16,10 @@
 // list(allItemsEl[1]);
 // list(allItemsEl[2]);
 
-const allItemsEl = document.querySelectorAll(".item");
-console.log(`В списке ${allItemsEl.length} категории.`);
+const allLiItems = document.querySelectorAll(".item");
+console.log(`В списке ${allLiItems.length} категории.`);
 
-allItemsEl.forEach((category) => {
+allLiItems.forEach((category) => {
   console.log(`Категория: ${category.children[0].textContent}`);
   console.log(`Количество элементов: ${category.children[1].children.length}`);
 });
