@@ -5,16 +5,27 @@ const refs = {
   collection: document.querySelector("#boxes"),
 };
 
-const createBoxes = (number) => {
-  for (let i = 0; i < number; i += 1) {
+const createBoxes = (amount) => {
+  const collectionEl = [];
+  for (let i = 0; i < amount; i += 1) {
     const divEl = document.createElement("div");
-    const randomRgb = () => {
-      const rgbNum = () => Math.floor(Math.random() * 256);
-      const r = rgbNum();
-      const g = rgbNum();
-      const b = rgbNum();
-      return `rgb(${r},${g},${b})`;
-    };
-    divEl.style.backgroundColor = randomRgb;
+    divEl.style.backgroundColor = `rgb(${Math.round(Math.random() * 255)}, 
+      ${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)})`;
+    divEl.style.width = 30 + 10 * i + "px";
+    divEl.style.height = 30 + 10 * i + "px";
+
+    collectionEl.push(divEl);
   }
+  refs.collection.append(...collectionEl);
 };
+
+const onCreateBtnClick = () => {
+  createBoxes(refs.input.value);
+};
+
+const onDestroyBtnClick = () => {
+  refs.collection.innerHTML = "";
+};
+
+refs.createBtn.addEventListener("click", onCreateBtnClick);
+refs.destroyBtn.addEventListener("click", onDestroyBtnClick);
