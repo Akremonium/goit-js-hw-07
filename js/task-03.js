@@ -24,6 +24,4 @@ const imgList = images
   })
   .join("");
 
-console.log(imgList);
-
 galleryRef.insertAdjacentHTML("afterbegin", imgList);
